@@ -11,8 +11,8 @@ import java.util.List;
 public class ImageSplitterUtil {
     /*
     *
-    *@param bitmap ����bitmap
-    *@param piece �г�piece*piece� �
+    *@param bitmap  切成bitmap
+    *@param piece 切成piece*piece块
     *@return List<ImagePiece>
     */
     public static List<ImagePiece> splitImage(Bitmap bitmap,int piece){
@@ -34,6 +34,6 @@ public class ImageSplitterUtil {
                 imagePieces.add(imagePiece);
             }
         }
-        return null;
+        return imagePieces;
     }
 }

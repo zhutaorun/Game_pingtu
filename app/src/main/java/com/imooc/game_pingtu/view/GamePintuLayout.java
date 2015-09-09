@@ -111,7 +111,7 @@ public class GamePintuLayout extends RelativeLayout implements View.OnClickListe
                 default:
                     break;
             }
-        };
+        }
     };
 
     public GamePintuLayout(Context context)
@@ -150,7 +150,7 @@ public class GamePintuLayout extends RelativeLayout implements View.OnClickListe
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec,heightMeasureSpec);
         //取宽和高中的小值
-        mWidth = Math.min(getMeasuredWidth(),getMeasuredHeight());
+        mWidth = Math.min(getMeasuredHeight(),getMeasuredWidth());
         if(!once) {
             //进行切图，以及排序
             initBitmap();
@@ -184,7 +184,7 @@ public class GamePintuLayout extends RelativeLayout implements View.OnClickListe
         if(mBitmap ==null){
             mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image);
         }
-
+        System.out.println("mBitmap="+mBitmap+","+"mColumn"+mColumn);
         mItemBitmaps = ImageSplitterUtil.splitImage(mBitmap,mColumn);
         if(mItemBitmaps==null)
         {
@@ -356,7 +356,7 @@ public class GamePintuLayout extends RelativeLayout implements View.OnClickListe
         for(int i=0;i<mGamePintuItems.length;i++)
         {
             ImageView imageView = mGamePintuItems[i];
-            if(getImageIdByTag((String)imageView.getTag())!=i) {
+            if(getImageIndexByTag((String)imageView.getTag())!=i) {
                 isSuccess = false;
             }
         }
@@ -377,7 +377,7 @@ public class GamePintuLayout extends RelativeLayout implements View.OnClickListe
         return Integer.parseInt(split[0]);
     }
 
-    public int getImageIndex(String tag){
+    public int getImageIndexByTag(String tag){
         String[] split = tag.split("_");
         return Integer.parseInt(split[1]);
     }
